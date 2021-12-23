@@ -3,6 +3,7 @@ const app = express()
 const port = 5000
 const bodyParser = require('body-parser');
 const { User } = require('./models/User');
+const config = require('./config/key');
 
 require('dotenv').config({path : '.env'});
 
@@ -13,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose')
-mongoose.connect(`mongodb+srv://${process.env.ID}:${process.env.PW}@boilerplate.ou3bg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`).then(() => console.log('MongoDB Connected...'))
+mongoose.connect(config.mongoURI).then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err))
 
 app.get('/', (req, res) => {
