@@ -48,7 +48,9 @@ function LoginPage() {
             <label>Password</label>
             <input type="password" value={Password} onChange={onPasswordHandler} autoComplete="on"/>
             <br/>
-            <button>Login</button>
+            <button>로그인</button>
+            <br/>
+            <button onClick={()=>navigate('/register')}>회원가입</button>
           </form>
     </div>
   )
