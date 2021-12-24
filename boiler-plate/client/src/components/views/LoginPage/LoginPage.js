@@ -46,7 +46,7 @@ function LoginPage() {
             <label>Email</label>
             <input type="email" value={Email} onChange={onEmailHanlder} />
             <label>Password</label>
-            <input type="password" value={Password} onChange={onPasswordHandler} />
+            <input type="password" value={Password} onChange={onPasswordHandler} autoComplete="on"/>
             <br/>
             <button>Login</button>
           </form>
