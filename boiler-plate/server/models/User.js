@@ -69,8 +69,8 @@ userSchema.methods.generateToken = function(cb) {
   // 'secretToken' -> user._id
   user.token = token
   user.save(function(err, user) {
-    if (err) return cb(err)
-    cb(null, user)
+    if (err) return cb(err);
+    cb(null, user);
   })
 }
 
