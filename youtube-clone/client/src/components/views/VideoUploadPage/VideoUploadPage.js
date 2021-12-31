@@ -21,6 +21,9 @@ function VideoUploadPage() {
   const [description, setDescription] = useState('');
   const [privateState, setPrivateState] = useState(0);
   const [category, setCategory] = useState('Film & Animation');
+  const [filePath, setFilePath] = useState('');
+  const [duration, setDuration] = useState('');
+  const [thumbnailPath, setThumbnailPath] = useState('');
 
   const onTitleChange = (e) => {
     setTitle(e.target.value);
@@ -42,8 +45,22 @@ function VideoUploadPage() {
     formData.append('file', files[0]);
     Axios.post('/api/video/uploadfiles', formData, config)
       .then(response => {
+        console.log(response);
         if (response.data.success) {
-          console.log(response.data)
+          let variable = {
+            url: response.data.url,
+            fileName: response.data.filename
+          }
+          setFilePath(response.data.url);
+          Axios.post('/api/video/thumbnail', variable)
+          .then(response => {
+            if (response.data.success) {
+              setDuration(response.data.fileDuration);
+              setThumbnailPath(response.data.url);
+            } else {
+              alert('썸네일 생성에 실패했습니다.')
+            }
+          })
         } else {
           alert('비디오 업로드를 실패했습니다.')
         }
@@ -72,10 +89,13 @@ function VideoUploadPage() {
                       <Icon type="plus" style={{ fontSize:'3rem'}}/>
                     </div>
                 )}
-              </Dropzone>         
+              </Dropzone>
+              {thumbnailPath &&
               <div>
-                <img src alt />
+                <img src={`http://localhost:5000/${thumbnailPath}`} alt='thumbnail' />
               </div>
+              }
+              
             </div>
             <br/>
             <br/>

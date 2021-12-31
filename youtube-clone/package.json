@@ -1,7 +1,7 @@
 {
-  "name": "react-boiler-plate",
+  "name": "youtube-clone",
   "version": "1.0.0",
-  "description": "react boiler plate",
+  "description": "youtube clone",
   "main": "index.js",
   "engine": {
     "node": "10.16.0",
@@ -22,6 +22,7 @@
     "cors": "^2.8.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",
+    "fluent-ffmpeg": "^2.1.2",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "mongoose": "^5.4.20",
