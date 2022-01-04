@@ -15,7 +15,7 @@ function Subscribe(props) {
         }
       })
     let subscribedVariable = { userTo: props.userTo, userFrom: localStorage.getItem('userId')}
-    Axios.post('api/subscribe/subscribed', subscribedVariable)
+    Axios.post('/api/subscribe/subscribed', subscribedVariable)
       .then(response => {
         if (response.data.success) {
           setSubscribed(response.data.subscribed)
@@ -23,10 +23,10 @@ function Subscribe(props) {
           alert('정보를 받아오지 못했습니다.')
         }
       })
-  })
+  },[])
 
   const onSubscribe = () => {
-    let subscribedVariable = {
+    const subscribedVariable = {
       userTo: props.userTo,
       userFrom: props.userFrom
     }
